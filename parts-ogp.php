@@ -1,28 +1,28 @@
 <?php
 /**
- * Name: Megumi Theme Parts OGP Parts
+ * Name: Parts OGP Parts
  * Description: OGP Parts
- * Author: DigitalCube Co., Ltd
+ * Author: WorksParts
  * Version: 0.7.1.0
 **/
 
-add_action( 'wp_head', 'mtp_add_metatags' );
-function mtp_add_metatags() {
+add_action( 'wp_head', 'worksparts_add_metatags' );
+function worksparts_add_metatags() {
 
 	$ogtitle     = wp_title( '|', false, 'right' );
 	$ogtype      = is_singular() ? 'article' : 'website';
-	$description = esc_attr( get_option( 'mtp_description', get_bloginfo( 'description', 'display' ) ) );
-	$keyword     = esc_attr( get_option( 'mtp_keyword' ) );
+	$description = esc_attr( get_option( 'worksparts_description', get_bloginfo( 'description', 'display' ) ) );
+	$keyword     = esc_attr( get_option( 'worksparts_keyword' ) );
 	$ogurl       = ( empty( $_SERVER["HTTPS"] ) ? "http://" : "https://" ) . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
-	$ogimage_id  = get_option( 'mtp_image' );
+	$ogimage_id  = get_option( 'worksparts_image' );
 	if ( $ogimage_id ) {
 		$image   = wp_get_attachment_image_src( $ogimage_id, 'full' );
 		$ogimage = reset( $image );
 	} else {
 		$ogimage = '';
 	}
-	$site_name   = esc_attr( get_option( 'mtp_title', get_bloginfo( 'name', 'display') ) );
-	$app_id      = esc_attr( get_option( 'mtp_appid' ) );
+	$site_name   = esc_attr( get_option( 'worksparts_title', get_bloginfo( 'name', 'display') ) );
+	$app_id      = esc_attr( get_option( 'worksparts_appid' ) );
 
 	if ( is_singular() ) {
 		$post_id = get_the_ID();
